@@ -1,0 +1,14 @@
+/home/ger/dev/facultad/practica-2/csharp/Cola/bin/Debug/net8.0/Cola
+/home/ger/dev/facultad/practica-2/csharp/Cola/bin/Debug/net8.0/Cola.deps.json
+/home/ger/dev/facultad/practica-2/csharp/Cola/bin/Debug/net8.0/Cola.runtimeconfig.json
+/home/ger/dev/facultad/practica-2/csharp/Cola/bin/Debug/net8.0/Cola.dll
+/home/ger/dev/facultad/practica-2/csharp/Cola/bin/Debug/net8.0/Cola.pdb
+/home/ger/dev/facultad/practica-2/csharp/Cola/obj/Debug/net8.0/Cola.GeneratedMSBuildEditorConfig.editorconfig
+/home/ger/dev/facultad/practica-2/csharp/Cola/obj/Debug/net8.0/Cola.AssemblyInfoInputs.cache
+/home/ger/dev/facultad/practica-2/csharp/Cola/obj/Debug/net8.0/Cola.AssemblyInfo.cs
+/home/ger/dev/facultad/practica-2/csharp/Cola/obj/Debug/net8.0/Cola.csproj.CoreCompileInputs.cache
+/home/ger/dev/facultad/practica-2/csharp/Cola/obj/Debug/net8.0/Cola.dll
+/home/ger/dev/facultad/practica-2/csharp/Cola/obj/Debug/net8.0/refint/Cola.dll
+/home/ger/dev/facultad/practica-2/csharp/Cola/obj/Debug/net8.0/Cola.pdb
+/home/ger/dev/facultad/practica-2/csharp/Cola/obj/Debug/net8.0/Cola.genruntimeconfig.cache
+/home/ger/dev/facultad/practica-2/csharp/Cola/obj/Debug/net8.0/ref/Cola.dll

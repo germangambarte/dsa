@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "wZzI1aCliaSfiU934vdyLHQSwHDWqwCm5HKxIKR8jEqEfIks3gLNBWbGHpMqXC1++Are853eWNrSXVKu49XCPw==",
+  "success": true,
+  "projectFilePath": "/home/ger/dev/facultad/practica-2/csharp/Pila/Pila.csproj",
+  "expectedPackageFiles": [
+    "/home/ger/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.7/microsoft.aspnetcore.app.ref.8.0.7.nupkg.sha512"
+  ],
+  "logs": []
+}
