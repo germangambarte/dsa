@@ -1,0 +1,8 @@
+/home/ger/dev/facultad/dsa/cpp/pila-secuencial/build/CMakeFiles/dsastructs.dir
+/home/ger/dev/facultad/dsa/cpp/pila-secuencial/build/CMakeFiles/pila_secuencial.dir
+/home/ger/dev/facultad/dsa/cpp/pila-secuencial/build/CMakeFiles/pila_enlazada.dir
+/home/ger/dev/facultad/dsa/cpp/pila-secuencial/build/CMakeFiles/cola_secuencial.dir
+/home/ger/dev/facultad/dsa/cpp/pila-secuencial/build/CMakeFiles/cola_enlazada.dir
+/home/ger/dev/facultad/dsa/cpp/pila-secuencial/build/CMakeFiles/cola_circular.dir
+/home/ger/dev/facultad/dsa/cpp/pila-secuencial/build/CMakeFiles/edit_cache.dir
+/home/ger/dev/facultad/dsa/cpp/pila-secuencial/build/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/cola_secuencial.dir/link.d "CMakeFiles/cola_secuencial.dir/tests/cola-secuencial/main.cpp.o" -o cola_secuencial  libdsastructs.a
