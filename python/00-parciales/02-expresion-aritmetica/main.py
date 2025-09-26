@@ -8,26 +8,38 @@ import numpy as np
 
 class Pila:
     __pila: np.ndarray
-    __ultimo: int
-    __capacidad: int
-    __longitud: int
+    __cap: int
+    __long: int
 
-    def __init__(self, capacidad) -> None:
-        self.__capacidad = capacidad
-        self.__ultimo = 0
-        self.__longitud = 0
+    def __init__(self, cap) -> None:
+        self.__cap = cap
+        self.__long = 0
+        self.__pila = np.empty(cap, dtype=str)
 
     def insertar(self, item: str):
-        pass
+        if self.llena():
+            print("pila llena.")
+            return None
+        self.__pila[self.__long] = item
+        self.__long += 1
 
     def eliminar(self):
-        pass
+        if self.vacia():
+            print("pila vacia.")
+            return
+        self.__long
+        return self.__pila[self.__long]
 
     def recorrer(self):
-        pass
+        for i in range(self.__long):
+            print(self.__pila[i], end=" ")
+        print()
 
     def vacia(self):
-        pass
+        return self.__long == 0
+
+    def llena(self):
+        return self.__long == self.__cap
 
 
 if __name__ == "__main__":
@@ -41,10 +53,11 @@ if __name__ == "__main__":
             pila.insertar(letra)
         if letra == ")":
             resultado = pila.eliminar()
-            if resultado != ")":
+            print({"resultado": resultado})
+            if resultado != "(":
                 error = True
         i += 1
-    if error == True:
+    if error:
         print("Ocurrió un problema")
     else:
         print("La expreción es correcta")
