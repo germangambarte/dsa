@@ -1,2 +1,0 @@
-/usr/bin/ar qc libdsastructs.a CMakeFiles/dsastructs.dir/src/PilaSecuencial.cpp.o CMakeFiles/dsastructs.dir/src/PilaEnlazada.cpp.o CMakeFiles/dsastructs.dir/src/ColaSecuencial.cpp.o CMakeFiles/dsastructs.dir/src/ColaEnlazada.cpp.o CMakeFiles/dsastructs.dir/src/ColaCircular.cpp.o CMakeFiles/dsastructs.dir/src/Nodo.cpp.o
-/usr/bin/ranlib libdsastructs.a

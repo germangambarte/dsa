@@ -1,1 +1,0 @@
-/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/pila_enlazada.dir/link.d "CMakeFiles/pila_enlazada.dir/tests/pila-secuencial/main.cpp.o" -o pila_enlazada  libdsastructs.a

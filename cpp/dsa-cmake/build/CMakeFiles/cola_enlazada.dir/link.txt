@@ -1,1 +1,0 @@
-/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/cola_enlazada.dir/link.d "CMakeFiles/cola_enlazada.dir/tests/cola-enlazada/main.cpp.o" -o cola_enlazada  libdsastructs.a

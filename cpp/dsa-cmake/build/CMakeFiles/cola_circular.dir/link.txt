@@ -1,1 +1,0 @@
-/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/cola_circular.dir/link.d "CMakeFiles/cola_circular.dir/tests/cola-circular/main.cpp.o" -o cola_circular  libdsastructs.a

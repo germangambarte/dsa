@@ -1,5 +1,4 @@
-class Nodo:
-    def __init__(self, item, siguiente=None):
+class Nodo: def __init__(self, item, siguiente=None):
         self.item = item
         self.siguiente = siguiente
 
