@@ -18,7 +18,7 @@ _____________
 |___________|
 |_____x_____|
 # Encadenamiento (arreglo de pilas encandenadas)
-- Si tengo una colisión lo inserto en la pila encadenada
+- Si tengo una colisión lo inserto en una lista encadenada que inserta por cabeza (una pila encadenada con un método buscar)
 - Dimension del arreglo:
     - determinar número máximo de coliciones
     - luego, M = N/cantidad de coliciones esperadas
