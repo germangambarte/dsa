@@ -1,7 +1,7 @@
 import numpy as np
 
 
-class Cola_Secuencial:
+class Cola:
     __cola: np.ndarray
     __primero: int
     __ultimo: int
@@ -23,10 +23,10 @@ class Cola_Secuencial:
         self.__ultimo = (self.__ultimo + 1) % self.__tamaño
         self.__cantidad += 1
 
-    def eliminar(self):
+    def eliminar(self) -> int:
         if self.vacia():
             print("pila vacia.")
-            return
+            return -1
         temp = self.__cola[self.__primero]
         self.__primero = (self.__primero + 1) % self.__tamaño
         self.__cantidad -= 1
@@ -54,7 +54,7 @@ class Cola_Secuencial:
 
 
 if __name__ == "__main__":
-    cola = Cola_Secuencial(3)
+    cola = Cola(3)
 
     cola.insertar(1)
     cola.insertar(2)

@@ -85,10 +85,10 @@ class Tabla:
                 if self.__arreglo[dir] is None:
                     self.__arreglo[dir] = Bucket(self.__D)
 
-                if not self.__arreglo[dir].llena():
-                    hay_espacio = True
-                else:
+                if self.__arreglo[dir].llena():
                     dir += 1
+                else:
+                    hay_espacio = True
 
             if not hay_espacio:
                 print(f"No hay espacio para insertar el item: {item}")
@@ -111,14 +111,13 @@ class Tabla:
             while dir < self.__T and not encontrado:
                 if self.__arreglo[dir]:
                     resultado = self.__arreglo[dir].buscar(item)
-                    if resultado is not None:
-                        encontrado = True
-                    else:
+                    if resultado is None:
                         dir += 1
-                else:
-                    dir += 1
+                    else:
+                        encontrado = True
 
         return resultado
+
     def mostrar(self):
         dir = 0
         while dir < self.__T:
@@ -132,8 +131,6 @@ class Tabla:
 
 if __name__ == "__main__":
     items = [1, 5, 6, 4, 7, 9, 3, 46, 75, 14, 27]
-    # items = [5, 11]
-    # items = [3, 6, 9, 12, 15]
     tabla = Tabla(12, 4)
 
     for item in items:

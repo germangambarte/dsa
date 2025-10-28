@@ -1,5 +1,6 @@
 import numpy as np
 
+
 class Nodo:
     def __init__(self, item, siguiente=None) -> None:
         self.__item = item
@@ -37,7 +38,7 @@ class Pila:
 
         while actual is not None and actual.get_item() != item:
             actual = actual.get_siguiente()
-        if actual.get_item() == item:
+        if actual and actual.get_item() == item:
             return True
         else:
             return False

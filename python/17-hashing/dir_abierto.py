@@ -30,23 +30,23 @@ class Tabla:
                 return False
         return True
 
-    def siguiente_primo(self, n):
+    def siguiente_primo(self, n: int) -> int:
         while not self.es_primo(n):
             n += 1
         return n
 
-    def hash(self, item):
+    def hash(self, item: int):
         return item % self.__M
 
-    def insertar(self, item):
+    def insertar(self, item: int) -> None:
         dir = self.hash(item)
 
-        while  self.__arreglo[dir] is not None:
+        while self.__arreglo[dir] is not None:
             dir = (dir + 1) % self.__M
 
         self.__arreglo[dir] = Item(item)
 
-    def buscar(self, item):
+    def buscar(self, item: int) -> int:
         dir = self.hash(item)
 
         actual = self.__arreglo[dir]
@@ -55,10 +55,10 @@ class Tabla:
 
         return actual.get_valor() == item
 
-    def mostrar(self):
+    def mostrar(self) -> None:
         i = 0
         for item in self.__arreglo:
-            if item != None:
+            if item is None:
                 print(f"[{i}]: {item.get_valor()}")
             else:
                 print(f"[{i}]: None")
