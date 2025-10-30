@@ -53,15 +53,10 @@ class Grafo:
         d[s] = self.__tiempo
 
         for u in range(self.__n):
-            if self.__matriz[s, u] > 0:
-                if d[u] == 0:
-                    self.bep_visita(d, f, u)
-                    return True
-                elif f[u] == 0:
-                    return True
+            if self.__matriz[s, u] > 0 and d[u] == 0:
+                self.bep_visita(d, f, u)
         self.__tiempo += 1
         f[s] = self.__tiempo
-        return False
 
     def mostrar(self):
         print("  ", end=" ")
