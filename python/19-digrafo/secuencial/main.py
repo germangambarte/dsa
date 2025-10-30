@@ -153,17 +153,37 @@ class Digrafo:
         else:
             print("El grafo es acíclico.")
 
+    def grado_salida(self, u: int) -> int:
+        grado = 0
+        for i in range(self.__n):
+            if self.__matriz[u, i] > 0:
+                grado += 1
+        return grado
+
+    def grado_entrada(self, u: int) -> int:
+        grado = 0
+        for i in range(self.__n):
+            if self.__matriz[i, u] > 0:
+                grado += 1
+        return grado
+
+    def fuente(self, u):
+        return self.grado_entrada(u) == 0
+
+    def pozo(self, u):
+        return self.grado_salida(u) == 0
+
 
 if __name__ == "__main__":
     print("--- MATRIZ ---")
-    print("--- PRUEBA CON DIGRAFO CÍCLICO Y CONEXO ---")
     aristas = [
         (0, 1, 5),
         (0, 4, 2),
         (1, 3, 3),
-        (2, 4, 6),
+        # (2, 4, 6),
+        # (2, 0, 6),
         (3, 2, 4),
-        (4, 1, 1),
+        (4, 2, 1),
     ]
 
     digrafo = Digrafo(5)
@@ -178,11 +198,11 @@ if __name__ == "__main__":
     digrafo.camino_mas_corto(0, 2)
     digrafo.conexo()
     digrafo.aciclico()
-
-    print("\n--- PRUEBA CON GRAFO NO CONEXO Y ACÍCLICO ---")
-    grafo_aciclico = Digrafo(4)
-    grafo_aciclico.insertar_arista(0, 1, 1)
-    grafo_aciclico.insertar_arista(2, 3, 1)  # Dos componentes desconectados (0-1) y (2-3)
-    grafo_aciclico.mostrar()
-    grafo_aciclico.conexo()
-    grafo_aciclico.aciclico()
+    fuente = 0
+    print(f"nodo {fuente} es fuente") if digrafo.fuente(fuente) else print(
+        f"nodo {fuente} no es fuente"
+    )
+    pozo = 2
+    print(f"nodo {pozo} es pozo") if digrafo.pozo(pozo) else print(
+        f"nodo {pozo} no es pozo"
+    )

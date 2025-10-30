@@ -104,7 +104,7 @@ class Lista:
         while posicion is not None and i != posicion:
             actual = actual.get_siguiente()
             i += 1
-        return actual.get_item() if actual is not None else None
+        return actual.get_item() if posicion is not None else None
 
     def buscar(self, item:object) -> int | None:
         actual = self.__cabeza
