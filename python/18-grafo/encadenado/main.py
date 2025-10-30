@@ -108,13 +108,16 @@ class Grafo:
             u = self.__distancia_minima(conocido, distancia)
             if u is not None:
                 conocido[u] = True
-                for v in range(self.__n):
-                    existe = self.__matriz[u].recuperar(v)
-                    if existe is not None and not conocido[v]:
-                        dist = distancia[u] + existe.get_peso()
+                actual = self.__matriz[u].get_cabeza()
+                while actual is not None:
+                    arista = actual.get_item()
+                    v = arista.get_nodo()
+                    if not conocido[v]:
+                        dist = distancia[u] + arista.get_peso()
                         if dist < distancia[v]:
                             distancia[v] = dist
                             predecesores[v] = u
+                    actual = actual.get_siguiente()
 
         return distancia, predecesores
 
@@ -204,11 +207,11 @@ if __name__ == "__main__":
     grafo.conexo()
     grafo.aciclico()
 
-    print("\n--- PRUEBA CON GRAFO NO CONEXO Y ACÍCLICO (BOSQUE) ---")
-    grafo_bosque = Grafo(4)
-    grafo_bosque.inicializar()
-    grafo_bosque.insertar_arista(0, 1)
-    grafo_bosque.insertar_arista(2, 3)  # Dos componentes desconectados (0-1) y (2-3)
-    grafo_bosque.mostrar()
-    grafo_bosque.conexo()
-    grafo_bosque.aciclico()
+    print("\n--- PRUEBA CON GRAFO NO CONEXO Y ACÍCLICO ---")
+    grafo_aciclico = Grafo(4)
+    grafo_aciclico.inicializar()
+    grafo_aciclico.insertar_arista(0, 1)
+    grafo_aciclico.insertar_arista(2, 3)  # Dos componentes desconectados (0-1) y (2-3)
+    grafo_aciclico.mostrar()
+    grafo_aciclico.conexo()
+    grafo_aciclico.aciclico()

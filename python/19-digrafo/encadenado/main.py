@@ -97,7 +97,6 @@ class Digrafo:
                 u = i
         return u
 
-    """VERSIÓN ARREGLO DE LISTAS"""
     def dijkstra(self, origen):
         conocido = np.zeros(self.__n, dtype=bool)
         distancia = np.full(self.__n, math.inf)
@@ -114,10 +113,9 @@ class Digrafo:
                 while actual is not None:
                     arista = actual.get_item()
                     v = arista.get_nodo()
-                    peso = arista.get_peso()
 
                     if not conocido[v]:
-                        dist = distancia[u] + peso
+                        dist = distancia[u] + arista.get_peso()
                         if dist < distancia[v]:
                             distancia[v] = dist
                             predecesores[v] = u
@@ -208,11 +206,11 @@ if __name__ == "__main__":
     digrafo.conexo()
     digrafo.aciclico()
 
-    print("\n--- PRUEBA CON DIGRAFO NO CONEXO Y ACÍCLICO (BOSQUE) ---")
-    digrafo_bosque = Digrafo(4)
-    digrafo_bosque.inicializar()
-    digrafo_bosque.insertar_arista(0, 1)
-    digrafo_bosque.insertar_arista(2, 3)  # Dos componentes desconectados (0-1) y (2-3)
-    digrafo_bosque.mostrar()
-    digrafo_bosque.conexo()
-    digrafo_bosque.aciclico()
+    print("\n--- PRUEBA CON DIGRAFO NO CONEXO Y ACÍCLICO ---")
+    digrafo_aciclico = Digrafo(4)
+    digrafo_aciclico.inicializar()
+    digrafo_aciclico.insertar_arista(0, 1)
+    digrafo_aciclico.insertar_arista(2, 3)  # Dos componentes desconectados (0-1) y (2-3)
+    digrafo_aciclico.mostrar()
+    digrafo_aciclico.conexo()
+    digrafo_aciclico.aciclico()

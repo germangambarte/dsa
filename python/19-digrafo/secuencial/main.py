@@ -79,7 +79,6 @@ class Digrafo:
                 u = i
         return u
 
-    """VERSIÓN MATRIZ"""
     def dijkstra(self, origen):
         conocido = np.zeros(self.__n, dtype=bool)
         distancia = np.full(self.__n, math.inf)
@@ -180,10 +179,10 @@ if __name__ == "__main__":
     digrafo.conexo()
     digrafo.aciclico()
 
-    print("\n--- PRUEBA CON GRAFO NO CONEXO Y ACÍCLICO (BOSQUE) ---")
-    grafo_bosque = Digrafo(4)
-    grafo_bosque.insertar_arista(0, 1, 1)
-    grafo_bosque.insertar_arista(2, 3, 1)  # Dos componentes desconectados (0-1) y (2-3)
-    grafo_bosque.mostrar()
-    grafo_bosque.conexo()
-    grafo_bosque.aciclico()
+    print("\n--- PRUEBA CON GRAFO NO CONEXO Y ACÍCLICO ---")
+    grafo_aciclico = Digrafo(4)
+    grafo_aciclico.insertar_arista(0, 1, 1)
+    grafo_aciclico.insertar_arista(2, 3, 1)  # Dos componentes desconectados (0-1) y (2-3)
+    grafo_aciclico.mostrar()
+    grafo_aciclico.conexo()
+    grafo_aciclico.aciclico()

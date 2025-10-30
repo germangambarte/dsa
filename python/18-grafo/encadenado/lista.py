@@ -24,6 +24,9 @@ class Lista:
         self.__cantidad = 0
         self.__cabeza = None
 
+    def get_cabeza(self):
+        return self.__cabeza
+
     def insertar(self, item: object) -> None:
         nuevo_nodo = Nodo(item)
         actual = self.__cabeza
@@ -70,7 +73,7 @@ class Lista:
             actual = actual.get_siguiente()
         return actual.get_item() or None
 
-    def anterior(self, item:object) -> object | None:
+    def anterior(self, item: object) -> object | None:
         anterior = None
         actual = self.__cabeza
         while actual and actual.get_item() != item:
@@ -94,7 +97,7 @@ class Lista:
             else None
         )
 
-    def recuperar(self, item:object) -> object | None:
+    def recuperar(self, item: object) -> object | None:
         posicion = self.buscar(item)
         i = 0
         actual = self.__cabeza
@@ -103,7 +106,7 @@ class Lista:
             i += 1
         return actual.get_item() if actual is not None else None
 
-    def buscar(self, item:object) -> int | None:
+    def buscar(self, item: object) -> int | None:
         actual = self.__cabeza
         i = 0
 
@@ -116,7 +119,7 @@ class Lista:
     def recorrer(self):
         actual = self.__cabeza
         while actual is not None:
-            item =  actual.get_item()
+            item = actual.get_item()
             print(f"({item.get_nodo()}, {item.get_peso()})", end=" ")
             actual = actual.get_siguiente()
         print()
