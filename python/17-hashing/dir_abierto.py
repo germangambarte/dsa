@@ -38,6 +38,27 @@ class Tabla:
     def hash(self, item: int):
         return item % self.__M
 
+    def hash_alfanumerico(self, item):
+        dir = 0
+        for i in item:
+            if i.isalpha():
+                dir += ord(i)
+            else:
+                dir+=i
+        return item % self.__M
+
+    def hash_extraccion(self, item):
+        # Suponemos que entra un documento, extraigo los ultimos 3 digitos
+        extraccion = item % 1000
+        print(extraccion % self.__M)
+        # Suponemos que entra un documento, extraigo los primeros 3 digitos
+        extraccion_2 = int(item / 1000000)
+        print(extraccion_2 % self.__M)
+
+    def hash_plegado(self,item):
+
+
+
     def insertar(self, item: int) -> None:
         dir = self.hash(item)
 
@@ -71,6 +92,7 @@ if __name__ == "__main__":
 
     for num in items:
         tabla.insertar(num)
-    tabla.mostrar()
-    print(tabla.buscar(5))
-    print(tabla.buscar(9))
+    # tabla.mostrar()
+    tabla.hash_extraccion(12345678)
+    # print(tabla.buscar(5))
+    # print(tabla.buscar(9))

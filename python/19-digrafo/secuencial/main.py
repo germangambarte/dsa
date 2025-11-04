@@ -18,12 +18,16 @@ class Digrafo:
     def insertar_arista(self, nodo_a: int, nodo_b: int, peso=1) -> None:
         self.__matriz[nodo_a, nodo_b] = peso
 
+    """OBTENER ADYACENTES"""
+
     def adyacentes(self, nodo):
         ady = np.zeros(self.__n, dtype=int)
         for i in range(self.__n):
             if self.__matriz[nodo, i] > 0:
                 ady[i] = 1
         return ady
+
+    """BUSQUEDA EN AMPLITUD"""
 
     def bea(self, s: int):
         d = np.full(self.__n, math.inf)
@@ -36,7 +40,9 @@ class Digrafo:
                 if self.__matriz[v, i] > 0 and d[i] == math.inf:
                     d[i] = d[v] + 1
                     cola.insertar(i)
-        print(f"BEA: {d}")
+        return d
+
+    """BUSQUEDA EN PROFUNDIDAD"""
 
     def bep(self):
         self.__tiempo = 0
@@ -79,6 +85,8 @@ class Digrafo:
                 u = i
         return u
 
+    """OBTENER CAMINO MÁS CORTO"""
+
     def dijkstra(self, origen):
         conocido = np.zeros(self.__n, dtype=bool)
         distancia = np.full(self.__n, math.inf)
@@ -114,12 +122,45 @@ class Digrafo:
         print("camino:", end=" ")
         camino.mostrar()
 
+    """VERIFICAR SI EXISTE CONEXIDAD"""
+
+    def bea_no_dirigido(self, s: int):
+        d = np.full(self.__n, math.inf)
+        cola = Cola(self.__n)
+        d[s] = 0
+        cola.insertar(s)
+        while not cola.vacia():
+            v = cola.eliminar()
+            for i in range(self.__n):
+                if (self.__matriz[v, i] > 0 or self.__matriz[i, v] > 0) and d[
+                    i
+                ] == math.inf:
+                    d[i] = d[v] + 1
+                    cola.insertar(i)
+        return d
+
     def conexo(self):
-        d, _ = self.dijkstra(0)
-        if math.inf in d:
-            print("El grafo no es conexo")
+        d = self.bea_no_dirigido(0)
+        return math.inf not in d
+
+    """OBTENER TIPO DE CONEXIDAD"""
+
+    def tipo_de_conexidad(self):
+        hay_camino = True
+        i = 0
+        while i < self.__n and hay_camino:
+            bea = self.bea(i)
+            if math.inf in bea:
+                hay_camino = False
+            else:
+                i += 1
+
+        if hay_camino:
+            print("digrafo fuertemente conexo")
         else:
-            print("El grafo es conexo")
+            print("digrafo simple conexo")
+
+    """CHEQUEAR SI ES ACÍCLICO"""
 
     def __aciclico_visita(self, d, f, s):
         self.__tiempo += 1
@@ -153,6 +194,8 @@ class Digrafo:
         else:
             print("El grafo es acíclico.")
 
+    """OPERACIONES ESPEDIFICAS DE LOS DIGRAFOS"""
+
     def grado_salida(self, u: int) -> int:
         grado = 0
         for i in range(self.__n):
@@ -176,33 +219,49 @@ class Digrafo:
 
 if __name__ == "__main__":
     print("--- MATRIZ ---")
-    aristas = [
+    fuente_pozo = [
         (0, 1, 5),
         (0, 4, 2),
         (1, 3, 3),
-        # (2, 4, 6),
-        # (2, 0, 6),
         (3, 2, 4),
         (4, 2, 1),
     ]
 
+    simple_conexo = [
+        (0, 1, 5),
+        (1, 2, 3),
+        (2, 3, 4),
+        (3, 1, 2),  # ciclo 1->2->3->1
+        (2, 4, 6),  # 4 es alcanzable desde el ciclo, pero no hay aristas de regreso a 0
+    ]
+
+    fuertemente_conexo = [
+        (0, 1, 5),
+        (1, 2, 3),
+        (2, 3, 4),
+        (3, 4, 2),
+        (4, 0, 1),  # ciclo 0->1->2->3->4->0 asegura fuerte conexidad
+        # opcional (no necesario): (0,2,2), (3,1,2) para hacer rutas más directas
+    ]
+
     digrafo = Digrafo(5)
-    for fila, col, peso in aristas:
+    for fila, col, peso in simple_conexo:
         digrafo.insertar_arista(fila, col, peso)
 
-    digrafo.mostrar()
-
-    # Pruebas con el grafo:
-    digrafo.bea(0)
-    digrafo.bep()
-    digrafo.camino_mas_corto(0, 2)
-    digrafo.conexo()
-    digrafo.aciclico()
-    fuente = 0
-    print(f"nodo {fuente} es fuente") if digrafo.fuente(fuente) else print(
-        f"nodo {fuente} no es fuente"
-    )
-    pozo = 2
-    print(f"nodo {pozo} es pozo") if digrafo.pozo(pozo) else print(
-        f"nodo {pozo} no es pozo"
-    )
+    # digrafo.mostrar()
+    #
+    # # Pruebas con el grafo:
+    # digrafo.bea(0)
+    # digrafo.bep()
+    # digrafo.camino_mas_corto(0, 2)
+    # digrafo.conexo()
+    # digrafo.aciclico()
+    # fuente = 0
+    # print(f"nodo {fuente} es fuente") if digrafo.fuente(fuente) else print(
+    #     f"nodo {fuente} no es fuente"
+    # )
+    # pozo = 2
+    # print(f"nodo {pozo} es pozo") if digrafo.pozo(pozo) else print(
+    #     f"nodo {pozo} no es pozo"
+    # )
+    digrafo.tipo_de_conexidad()

@@ -115,7 +115,7 @@ class ArbolBinarioBusqueda:
 
     def __grado(self, nodo):
         grado = 0
-        if nodo.get_izq():
+        if nodo.get_izq() is not None:
             grado += 1
         if nodo.get_der():
             grado += 1
@@ -202,12 +202,67 @@ class ArbolBinarioBusqueda:
         else:
             self.__nivel(actual.get_der(), clave, contador + 1)
 
+    def __mostrar_nivel(self, actual: Nodo, nivel, contador=0):
+        if contador == nivel - 1:
+            print(actual.get_clave(), end=" ")
+            return
+        self.__mostrar_nivel(actual.get_izq(), nivel, contador + 1)
+        self.__mostrar_nivel(actual.get_der(), nivel, contador + 1)
+
+    def mostrar_nivel(self,nivel):
+        self.__mostrar_nivel(self.__raiz,nivel,0)
+
     def hoja(self, clave: int):
         nodo = self.buscar_alt(clave)
         if not nodo:
             print(f"nodo {clave} no encontrado")
             return
         return self.__grado(nodo) == 2
+
+    def __in_orden(self, actual=None):
+        if actual is None:
+            return
+        self.__in_orden(actual.get_izq())
+        print(actual, end=" ")
+        self.__in_orden(actual.get_der())
+
+    def __contador_hojas(self, actual, cant):
+        if actual is None:
+            return 0
+
+        if actual.get_izq() is None and actual.get_der() is None:
+            return 1
+
+        cant = self.__contador_hojas(actual.get_izq(), cant)
+        cant += self.__contador_hojas(actual.get_der(), cant)
+        return cant
+
+    def __terminales(self, actual):
+        if actual is None:
+            return 
+        if actual.get_izq() is None and actual.get_der() is None:
+            print(actual.get_clave())
+        self.__terminales(actual.get_izq())
+        self.__terminales(actual.get_der())
+
+    def terminales(self):
+        self.__terminales(self.__raiz.get_izq())
+
+    def contador_hojas(self):
+        d = 0
+        c = self.__contador_hojas(self.__raiz, d)
+        print(c)
+
+    def __contador_un_solo_descendiente(self, actual, cant):
+        if actual is None:
+            return 0
+
+        if self.__grado(actual) == 1:
+            return 1
+
+        cant = self.__contador_hojas(actual.get_izq(), cant)
+        cant += self.__contador_hojas(actual.get_der(), cant)
+        return cant
 
     def altura(self):
         return self.__altura(self.__raiz)
@@ -238,4 +293,10 @@ if __name__ == "__main__":
     arbol.insertar(83)
     arbol.insertar(100)
     arbol.insertar(79)
-    arbol.in_orden()
+    arbol.insertar(95)
+    arbol.insertar(109)
+
+    # arbol.contador_hojas()
+    # arbol.mostrar_nivel(1)
+    # arbol.in_orden()
+    arbol.terminales()
